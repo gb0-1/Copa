@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIFA World Cup 2026™ Official Store</title>
+    <style>
+        :root {
+            --primary-maroon: #800000;
+            --secondary-gold: #C0A060;
+            --dark-gray: #333333;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --text-gray: #666666;
+            --border-radius: 8px;
+            --shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+        }
+
+        /* HEADER */
+        header {
+            background-color: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--border-radius);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-logo {
+            height: 40px;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* MAROON BANNER */
+        .maroon-banner {
+            background-color: var(--primary-maroon);
+            color: var(--white);
+            text-align: center;
+            padding: 10px 0;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* HERO BANNER */
+        .hero-banner {
+            background-image: url('data:image/jpeg;base64,...'); /* Base64 hero image (IMAGE 7 equivalent) */
+            background-size: cover;
+            background-position: center;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 2rem;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .exclusivos-badge {
+            background-color: var(--secondary-gold);
+            color: var(--primary-maroon);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        /* PRODUCTS GRID */
+        .products-grid {
+            padding: 30px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--primary-maroon);
+        }
+
+        .product-details {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 15px;
+        }
+
+        /* Panini Logo removed and spaced */
+        .product-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--dark-gray);
+        }
+
+        .buy-button {
+            background-color: var(--primary-maroon);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* AVALIAÇÕES */
+        .testimonials {
+            background-color: var(--white);
+            padding: 40px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--primary-maroon);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .testimonial-card {
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            border: 1px solid #eee;
+        }
+
+        .testimonial-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-stars {
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-text {
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--primary-maroon);
+            color: var(--white);
+            padding: 20px 5%;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        .footer-logo {
+            height: 30px;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="https://i.postimg.cc/W3YV3m7N/logo-fifa.png" class="header-logo" alt="FIFA Logo">
+    <div class="menu-icon">&#9776;</div>
+</header>
+
+<div class="maroon-banner">FIFA WORLD CUP 2026™ OFFICIAL STORE</div>
+
+<div class="hero-banner">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="exclusivos-badge">PRODUTOS EXCLUSIVOS</div>
+        <div class="hero-title">COLECIONE A HISTÓRIA</div>
+    </div>
+</div>
+
+<main>
+    <div class="products-grid">
+        <div class="product-card">
+            <img src="https://i.postimg.cc/W3YV3m7N/capadura.webp" class="product-image" alt="Álbum Capa Dura">
+            <div class="product-info">
+                <h3 class="product-title">Álbum Capa Dura Oficial</h3>
+                <p class="product-details">112 páginas, espaço para 980 figurinhas</p>
+                <div class="product-footer">
+                    <span class="product-price">R$ 74,90</span>
+                    <button class="buy-button">COMPRAR</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://i.postimg.cc/mD8P9S3p/brochura.webp" class="product-image" alt="Álbum Brochura">
+            <div class="product-info">
+                <h3 class="product-title">Álbum Brochura (Capa Mole)</h3>
+                <p class="product-details">Tamanho Oficial 30 x 27 cm, páginas internas detalhadas</p>
+                <div class="product-footer">
+                    <span class="product-price">R$ 24,90</span>
+                    <button class="buy-button">COMPRAR</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://i.postimg.cc/9FmS0R9r/cromos.jpg" class="product-image" alt="Cromos">
+            <div class="product-info">
+                <h3 class="product-title">Pacote com 7 Cromos</h3>
+                <p class="product-details">Figurinhas metalizadas e raras exclusivas no pacote</p>
+                <div class="product-footer">
+                    <span class="product-price">R$ 7,00</span>
+                    <button class="buy-button">COMPRAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="testimonials">
+        <h2 class="section-title">AVALIAÇÕES DOS COLECIONADORES</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <img src="data:image/jpeg;base64,...test_man..." class="testimonial-image" alt="User review 1">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"O álbum capa dura chegou impecável. As brilhantes vieram sem defeito. Recomendo!"</p>
+            </div>
+
+            <div class="testimonial-card">
+                <img src="data:image/jpeg;base64,...test_girl..." class="testimonial-image" alt="User review 2">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Não acreditei quando abri o pacote! O site é confiável e a entrega super rápida."</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <img src="https://i.postimg.cc/W3YV3m7N/footer-logo.png" class="footer-logo" alt="FIFA Logo Footer">
+    <p>Licença Oficial FIFA 0ee6</p>
+    <p>FIFA Official Store™ – Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>
+
+```

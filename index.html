@@ -107,3 +107,93 @@
         <img id="qrImg" style="width: 220px; border: 1px solid #eee;" src="">
         <p style="font-size: 1.2rem; font-weight: bold; margin: 10px 0;" id="valorFinalPix"></p>
         <button class="btn-finalizar" onclick="copiarPix()">COPIAR CÓDIGO PIX</button>
+        <p onclick="location.reload()" style="margin-top: 20px; color: red; cursor: pointer;">Fechar</p>
+    </div>
+</div>
+
+<div id="modalLogin" class="modal">
+    <div class="modal-content" style="min-height: auto; margin-top: 100px; border-radius: 15px;">
+        <h2 style="text-align: center;">Acessar Loja</h2>
+        <input type="text" id="loginNome" placeholder="Usuário">
+        <input type="email" id="loginEmail" placeholder="Gmail">
+        <input type="password" placeholder="Senha">
+        <button class="btn-add" style="font-size: 1.1rem; padding: 15px;" onclick="efetuarLogin()">ENTRAR AGORA</button>
+        <p onclick="fecharModal('modalLogin')" style="text-align: center; margin-top: 15px; cursor: pointer;">Voltar</p>
+    </div>
+</div>
+
+<script>
+    let carrinho = [];
+    const CHAVE_PIX = "163.059.829-10";
+
+    function addAoCarrinho(nome, preco) {
+        carrinho.push({nome, preco});
+        atualizarContagem();
+        alert(nome + " adicionado ao carrinho!");
+    }
+
+    function atualizarContagem() {
+        document.getElementById('contagem').innerText = carrinho.length;
+    }
+
+    function abrirCarrinho() {
+        const lista = document.getElementById('itensCarrinho');
+        lista.innerHTML = "";
+        let total = 0;
+
+        carrinho.forEach((item, index) => {
+            total += item.preco;
+            lista.innerHTML += `
+                <div class="cart-item">
+                    <span>${item.nome}</span>
+                    <strong>R$ ${item.preco.toFixed(2)}</strong>
+                </div>
+            `;
+        });
+
+        document.getElementById('valorTotal').innerText = `R$ ${total.toFixed(2)}`;
+        document.getElementById('modalCarrinho').style.display = 'flex';
+    }
+
+    function finalizarCompra() {
+        const nome = document.getElementById('checkoutNome').value;
+        const cep = document.getElementById('checkoutCEP').value;
+        
+        if(!nome || !cep || carrinho.length === 0) {
+            alert("Por favor, preencha os dados de entrega e adicione itens!");
+            return;
+        }
+
+        let total = carrinho.reduce((sum, item) => sum + item.preco, 0).toFixed(2);
+        
+        // Gerar PIX Copia e Cola
+        const cod = `00020101021126580014BR.GOV.BCB.PIX0114${CHAVE_PIX.replace(/[^0-9]/g, '')}520400005303986540${total}5802BR5913FIFA_STORE_266009SAO_PAULO62070503***6304`;
+        
+        document.getElementById('qrImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(cod)}`;
+        document.getElementById('valorFinalPix').innerText = "Total: R$ " + total;
+        window.pixFinal = cod;
+        
+        document.getElementById('modalCarrinho').style.display = 'none';
+        document.getElementById('modalPix').style.display = 'flex';
+    }
+
+    function abrirLogin() { document.getElementById('modalLogin').style.display = 'flex'; }
+    
+    function efetuarLogin() {
+        const n = document.getElementById('loginNome').value;
+        if(n) {
+            document.getElementById('userDisplay').innerText = "Olá, " + n;
+            fecharModal('modalLogin');
+        }
+    }
+
+    function copiarPix() {
+        navigator.clipboard.writeText(window.pixFinal);
+        alert("Código PIX Copiado!");
+    }
+
+    function fecharModal(id) { document.getElementById(id).style.display = 'none'; }
+</script>
+
+</body>
+</html>

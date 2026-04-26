@@ -5,184 +5,194 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FIFA World Cup 2026™ Official Store</title>
     <style>
-        :root {
-            --marrom-fifa: #800000;
-            --ouro-detalhe: #C0A060;
-            --branco: #FFFFFF;
-            --cinza-fundo: #F5F5F5;
-        }
+        :root { --marrom: #800000; --ouro: #C0A060; --branco: #FFFFFF; --verde: #28a745; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f7f7f7; color: #333; padding-bottom: 50px; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
-        body { background-color: var(--cinza-fundo); color: #333; }
+        /* HEADER */
+        header { background: var(--branco); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-weight: 900; color: var(--marrom); font-size: 1.1rem; }
+        .nav-icons { display: flex; align-items: center; gap: 20px; }
+        .cart-icon { position: relative; cursor: pointer; font-size: 1.5rem; }
+        .cart-count { position: absolute; top: -5px; right: -10px; background: var(--marrom); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 50%; }
 
-        /* CABEÇALHO COM LOGIN */
-        header {
-            background: var(--branco);
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #ddd;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .logo { font-weight: 900; font-size: 1.2rem; color: var(--marrom-fifa); }
-        .logo span { color: var(--ouro-detalhe); }
-        .btn-login {
-            background: var(--marrom-fifa);
-            color: white;
-            padding: 8px 18px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.85rem;
-        }
-
-        /* BANNER PRINCIPAL */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1000') center/cover;
-            height: 220px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-        }
-        .selo-exclusivo {
-            background: var(--ouro-detalhe);
-            color: var(--marrom-fifa);
-            padding: 4px 12px;
-            font-weight: bold;
-            font-size: 0.7rem;
-            margin-bottom: 10px;
-        }
+        /* BANNER */
+        .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1000') center/cover; height: 180px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; }
 
         /* PRODUTOS */
-        .container { padding: 20px; }
-        .card {
-            background: var(--branco);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-        }
-        .card img { width: 100%; max-width: 250px; height: auto; margin-bottom: 15px; border-radius: 5px; }
-        .preco { font-size: 1.6rem; font-weight: bold; margin: 10px 0; color: #111; }
-        .btn-comprar {
-            background: #28a745;
-            color: white;
-            border: none;
-            padding: 15px;
-            width: 100%;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
-        }
+        .grid-produtos { padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
+        .card { background: white; border-radius: 8px; padding: 15px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .card img { width: 100%; height: 150px; object-fit: contain; margin-bottom: 10px; }
+        .card h3 { font-size: 0.9rem; height: 40px; overflow: hidden; }
+        .preco { font-size: 1.2rem; font-weight: bold; margin: 8px 0; color: var(--marrom); }
+        .btn-add { background: var(--marrom); color: white; border: none; padding: 10px; width: 100%; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 0.8rem; }
 
-        /* AVALIAÇÕES APENAS TEXTO */
-        .avaliacoes-secao { background: var(--branco); padding: 20px; border-top: 1px solid #ddd; }
-        .titulo-secao { color: var(--marrom-fifa); margin-bottom: 20px; text-align: center; }
-        .comentario {
-            border-bottom: 1px solid #eee;
-            padding-bottom: 15px;
-            margin-bottom: 15px;
-        }
-        .comentario:last-child { border-bottom: none; }
-        .estrelas { color: #FFD700; margin-bottom: 5px; }
-        .nome-usuario { font-weight: bold; display: block; margin-bottom: 5px; }
-        .texto-comentario { font-style: italic; color: #555; line-height: 1.4; }
+        /* MODAL CARRINHO / CHECKOUT */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; overflow-y: auto; }
+        .modal-content { background: white; width: 100%; max-width: 500px; min-height: 100vh; padding: 25px; position: relative; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; }
+        
+        input { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 6px; }
+        .total-box { margin: 20px 0; padding: 15px; background: #f9f9f9; border-radius: 8px; font-size: 1.2rem; font-weight: bold; display: flex; justify-content: space-between; }
+        .btn-finalizar { background: var(--verde); color: white; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: bold; font-size: 1.1rem; cursor: pointer; }
 
-        /* MODAL PIX */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; justify-content: center; align-items: center; }
-        .modal-content { background: white; padding: 25px; border-radius: 15px; width: 90%; max-width: 400px; text-align: center; }
-        .qr-code { width: 200px; height: 200px; margin: 15px 0; border: 1px solid #ddd; }
+        .btn-login { cursor: pointer; font-weight: bold; color: var(--marrom); text-decoration: underline; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
 <header>
     <div class="logo">FIFA WORLD CUP <span>2026</span></div>
-    <a href="#" class="btn-login">Entrar</a>
+    <div class="nav-icons">
+        <span class="btn-login" id="userDisplay" onclick="abrirLogin()">Entrar</span>
+        <div class="cart-icon" onclick="abrirCarrinho()">
+            🛒 <span class="cart-count" id="contagem">0</span>
+        </div>
+    </div>
 </header>
 
 <div class="hero">
-    <div class="selo-exclusivo">PRODUTOS EXCLUSIVOS</div>
-    <h1>COLECIONE A HISTÓRIA</h1>
+    <h1 style="font-size: 1.5rem;">FIFA OFFICIAL STORE</h1>
 </div>
 
-<div class="container">
+<div class="grid-produtos">
     <div class="card">
-        <img src="10380.webp" alt="Álbum Capa Dura">
+        <img src="10380.webp" alt="Capa Dura">
         <h3>Álbum Capa Dura Oficial</h3>
-        <p style="color: #666;">Edição de Colecionador</p>
         <div class="preco">R$ 74,90</div>
-        <button class="btn-comprar" onclick="gerarPix('Álbum Capa Dura', '74.90')">COMPRAR AGORA</button>
+        <button class="btn-add" onclick="addAoCarrinho('Álbum Capa Dura', 74.90)">ADICIONAR</button>
     </div>
 
     <div class="card">
-        <img src="10378.webp" alt="Álbum Brochura">
-        <h3>Álbum Brochura Oficial</h3>
-        <p style="color: #666;">Copa do Mundo 2026</p>
+        <img src="10378.webp" alt="Brochura">
+        <h3>Álbum Brochura</h3>
         <div class="preco">R$ 24,90</div>
-        <button class="btn-comprar" onclick="gerarPix('Álbum Brochura', '24.90')">COMPRAR AGORA</button>
+        <button class="btn-add" onclick="addAoCarrinho('Álbum Brochura', 24.90)">ADICIONAR</button>
+    </div>
+
+    <div class="card">
+        <img src="10379.jpg" alt="Cromos">
+        <h3>Combo 10 Pacotes Cromos</h3>
+        <div class="preco">R$ 50,00</div>
+        <button class="btn-add" onclick="addAoCarrinho('Combo Cromos', 50.00)">ADICIONAR</button>
     </div>
 </div>
 
-<div class="avaliacoes-secao">
-    <h2 class="titulo-secao">Avaliações de Clientes</h2>
-    <div class="comentario">
-        <div class="estrelas">★★★★★</div>
-        <span class="nome-usuario">Lucas H.</span>
-        <p class="texto-comentario">"Chegou muito rápido! O álbum capa dura é sensacional, qualidade premium."</p>
-    </div>
-    <div class="comentario">
-        <div class="estrelas">★★★★★</div>
-        <span class="nome-usuario">Thiago S.</span>
-        <p class="texto-comentario">"Consegui figurinhas raras logo nos primeiros pacotes. Entrega nota 10."</p>
+<div id="modalCarrinho" class="modal">
+    <div class="modal-content">
+        <h2 style="margin-bottom: 20px;">Meu Carrinho</h2>
+        <div id="itensCarrinho">
+            </div>
+        
+        <div class="total-box">
+            <span>Total:</span>
+            <span id="valorTotal">R$ 0,00</span>
+        </div>
+
+        <h3 style="margin: 20px 0 10px;">Informações de Entrega</h3>
+        <input type="text" id="checkoutNome" placeholder="Nome Completo">
+        <input type="text" id="checkoutCEP" placeholder="CEP">
+        <input type="text" id="checkoutEnd" placeholder="Endereço e Número">
+        <input type="text" id="checkoutBairro" placeholder="Bairro e Cidade">
+
+        <button class="btn-finalizar" onclick="finalizarCompra()">FINALIZAR E PAGAR</button>
+        <button onclick="fecharModal('modalCarrinho')" style="width: 100%; background: none; border: none; margin-top: 15px; color: #999; cursor: pointer;">Continuar comprando</button>
     </div>
 </div>
 
 <div id="modalPix" class="modal">
-    <div class="modal-content">
-        <h2 style="color: #28a745">Pagamento via PIX</h2>
-        <p>Produto: <strong id="nomeProd"></strong></p>
-        <img id="qrCodeImg" class="qr-code" src="" alt="QR Code PIX">
-        <p>Valor: <strong id="valorProd"></strong></p>
-        <button class="btn-comprar" style="margin-top: 15px;" onclick="copiarPix()">COPIAR CÓDIGO PIX</button>
-        <button onclick="fecharModal()" style="margin-top: 15px; background:none; border:none; color:red; cursor:pointer;">Cancelar</button>
+    <div class="modal-content" style="min-height: auto; margin-top: 50px; border-radius: 15px; text-align: center;">
+        <h2 style="color: var(--verde)">Pagamento via PIX</h2>
+        <p style="margin: 10px 0;">Escaneie o código abaixo:</p>
+        <img id="qrImg" style="width: 220px; border: 1px solid #eee;" src="">
+        <p style="font-size: 1.2rem; font-weight: bold; margin: 10px 0;" id="valorFinalPix"></p>
+        <button class="btn-finalizar" onclick="copiarPix()">COPIAR CÓDIGO PIX</button>
+        <p onclick="location.reload()" style="margin-top: 20px; color: red; cursor: pointer;">Fechar</p>
+    </div>
+</div>
+
+<div id="modalLogin" class="modal">
+    <div class="modal-content" style="min-height: auto; margin-top: 100px; border-radius: 15px;">
+        <h2 style="text-align: center;">Acessar Loja</h2>
+        <input type="text" id="loginNome" placeholder="Usuário">
+        <input type="email" id="loginEmail" placeholder="Gmail">
+        <input type="password" placeholder="Senha">
+        <button class="btn-add" style="font-size: 1.1rem; padding: 15px;" onclick="efetuarLogin()">ENTRAR AGORA</button>
+        <p onclick="fecharModal('modalLogin')" style="text-align: center; margin-top: 15px; cursor: pointer;">Voltar</p>
     </div>
 </div>
 
 <script>
-    const CHAVE_PIX = "163.059.829-10"; // Sua chave cadastrada
+    let carrinho = [];
+    const CHAVE_PIX = "163.059.829-10";
 
-    function gerarPix(nome, valor) {
-        document.getElementById('nomeProd').innerText = nome;
-        document.getElementById('valorProd').innerText = "R$ " + valor;
+    function addAoCarrinho(nome, preco) {
+        carrinho.push({nome, preco});
+        atualizarContagem();
+        alert(nome + " adicionado ao carrinho!");
+    }
+
+    function atualizarContagem() {
+        document.getElementById('contagem').innerText = carrinho.length;
+    }
+
+    function abrirCarrinho() {
+        const lista = document.getElementById('itensCarrinho');
+        lista.innerHTML = "";
+        let total = 0;
+
+        carrinho.forEach((item, index) => {
+            total += item.preco;
+            lista.innerHTML += `
+                <div class="cart-item">
+                    <span>${item.nome}</span>
+                    <strong>R$ ${item.preco.toFixed(2)}</strong>
+                </div>
+            `;
+        });
+
+        document.getElementById('valorTotal').innerText = `R$ ${total.toFixed(2)}`;
+        document.getElementById('modalCarrinho').style.display = 'flex';
+    }
+
+    function finalizarCompra() {
+        const nome = document.getElementById('checkoutNome').value;
+        const cep = document.getElementById('checkoutCEP').value;
         
-        // Gera o código PIX Estático (Copia e Cola)
-        const pixCodigo = `00020101021126580014BR.GOV.BCB.PIX0114${CHAVE_PIX.replace(/[^0-9]/g, '')}520400005303986540${valor}5802BR5913FIFA_STORE_266009SAO_PAULO62070503***6304`;
+        if(!nome || !cep || carrinho.length === 0) {
+            alert("Por favor, preencha os dados de entrega e adicione itens!");
+            return;
+        }
+
+        let total = carrinho.reduce((sum, item) => sum + item.preco, 0).toFixed(2);
         
-        // Gera o QR Code visual
-        const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(pixCodigo)}`;
+        // Gerar PIX Copia e Cola
+        const cod = `00020101021126580014BR.GOV.BCB.PIX0114${CHAVE_PIX.replace(/[^0-9]/g, '')}520400005303986540${total}5802BR5913FIFA_STORE_266009SAO_PAULO62070503***6304`;
         
-        document.getElementById('qrCodeImg').src = qrUrl;
-        window.currentPix = pixCodigo; // Salva para copiar depois
+        document.getElementById('qrImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(cod)}`;
+        document.getElementById('valorFinalPix').innerText = "Total: R$ " + total;
+        window.pixFinal = cod;
+        
+        document.getElementById('modalCarrinho').style.display = 'none';
         document.getElementById('modalPix').style.display = 'flex';
     }
 
-    function copiarPix() {
-        navigator.clipboard.writeText(window.currentPix);
-        alert("Código PIX copiado! Cole no seu banco.");
+    function abrirLogin() { document.getElementById('modalLogin').style.display = 'flex'; }
+    
+    function efetuarLogin() {
+        const n = document.getElementById('loginNome').value;
+        if(n) {
+            document.getElementById('userDisplay').innerText = "Olá, " + n;
+            fecharModal('modalLogin');
+        }
     }
 
-    function fecharModal() {
-        document.getElementById('modalPix').style.display = 'none';
+    function copiarPix() {
+        navigator.clipboard.writeText(window.pixFinal);
+        alert("Código PIX Copiado!");
     }
+
+    function fecharModal(id) { document.getElementById(id).style.display = 'none'; }
 </script>
 
 </body>

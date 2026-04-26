@@ -16,269 +16,101 @@
             --shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
-        body {
-            background-color: var(--light-gray);
-            color: var(--dark-gray);
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: var(--light-gray); color: var(--dark-gray); }
 
         /* HEADER */
-        header {
-            background-color: var(--white);
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid var(--border-radius);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-logo {
-            height: 40px;
-        }
-
-        .menu-icon {
-            font-size: 24px;
-            cursor: pointer;
-        }
+        header { background-color: var(--white); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; position: sticky; top: 0; z-index: 1000; }
+        .header-logo { font-size: 1.5rem; font-weight: 900; color: var(--primary-maroon); }
+        .menu-icon { font-size: 24px; cursor: pointer; }
 
         /* MAROON BANNER */
-        .maroon-banner {
-            background-color: var(--primary-maroon);
-            color: var(--white);
-            text-align: center;
-            padding: 10px 0;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
+        .maroon-banner { background-color: var(--primary-maroon); color: var(--white); text-align: center; padding: 10px 0; font-weight: bold; font-size: 1.1rem; }
 
         /* HERO BANNER */
         .hero-banner {
-            background-image: url('data:image/jpeg;base64,...'); /* Base64 hero image (IMAGE 7 equivalent) */
-            background-size: cover;
-            background-position: center;
-            height: 250px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: var(--white);
-            text-align: center;
-            position: relative;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1000');
+            background-size: cover; background-position: center; height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: var(--white); text-align: center;
         }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.4);
-        }
-
-        .hero-content {
-            z-index: 1;
-        }
-
-        .hero-title {
-            font-size: 2rem;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        .exclusivos-badge {
-            background-color: var(--secondary-gold);
-            color: var(--primary-maroon);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.8rem;
-            margin-bottom: 10px;
-        }
+        .hero-title { font-size: 2rem; text-transform: uppercase; font-weight: bold; }
+        .exclusivos-badge { background-color: var(--secondary-gold); color: var(--primary-maroon); padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; margin-bottom: 10px; }
 
         /* PRODUCTS GRID */
-        .products-grid {
-            padding: 30px 5%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .product-card {
-            background-color: var(--white);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid #eee;
-        }
-
-        .product-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .product-info {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-title {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            color: var(--primary-maroon);
-        }
-
-        .product-details {
-            font-size: 0.9rem;
-            color: var(--text-gray);
-            margin-bottom: 15px;
-        }
-
-        /* Panini Logo removed and spaced */
-        .product-footer {
-            margin-top: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .product-price {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: var(--dark-gray);
-        }
-
-        .buy-button {
-            background-color: var(--primary-maroon);
-            color: var(--white);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-        }
+        .products-grid { padding: 30px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .product-card { background-color: var(--white); border-radius: var(--border-radius); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; border: 1px solid #eee; }
+        .product-image { width: 100%; height: 250px; object-fit: contain; padding: 15px; background: white; }
+        .product-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .product-title { font-size: 1.2rem; margin-bottom: 5px; color: var(--primary-maroon); }
+        .product-details { font-size: 0.9rem; color: var(--text-gray); margin-bottom: 15px; }
+        .product-footer { margin-top: auto; display: flex; justify-content: space-between; align-items: center; }
+        .product-price { font-size: 1.3rem; font-weight: bold; color: var(--dark-gray); }
+        .buy-button { background-color: var(--primary-maroon); color: var(--white); border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; }
 
         /* AVALIAÇÕES */
-        .testimonials {
-            background-color: var(--white);
-            padding: 40px 5%;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            color: var(--primary-maroon);
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .testimonial-card {
-            background-color: var(--light-gray);
-            border-radius: var(--border-radius);
-            padding: 20px;
-            border: 1px solid #eee;
-        }
-
-        .testimonial-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 4px;
-            margin-bottom: 15px;
-        }
-
-        .testimonial-stars {
-            color: #FFD700;
-            margin-bottom: 10px;
-        }
-
-        .testimonial-text {
-            font-size: 0.9rem;
-            color: var(--dark-gray);
-        }
+        .testimonials { background-color: var(--white); padding: 40px 5%; }
+        .section-title { text-align: center; font-size: 1.8rem; margin-bottom: 30px; color: var(--primary-maroon); }
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .testimonial-card { background-color: var(--light-gray); border-radius: var(--border-radius); padding: 20px; border: 1px solid #eee; }
+        .testimonial-image { width: 100%; height: 200px; object-fit: cover; border-radius: 4px; margin-bottom: 15px; }
+        .testimonial-stars { color: #FFD700; margin-bottom: 10px; font-size: 1.2rem; }
+        .testimonial-text { font-size: 0.9rem; color: var(--dark-gray); }
 
         /* FOOTER */
-        footer {
-            background-color: var(--primary-maroon);
-            color: var(--white);
-            padding: 20px 5%;
-            text-align: center;
-            font-size: 0.8rem;
-        }
+        footer { background-color: var(--primary-maroon); color: var(--white); padding: 20px 5%; text-align: center; font-size: 0.8rem; }
 
-        .footer-logo {
-            height: 30px;
-            margin-bottom: 10px;
-        }
-
+        /* MODAL PIX */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background: white; padding: 30px; border-radius: 15px; width: 90%; max-width: 400px; text-align: center; }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="https://i.postimg.cc/W3YV3m7N/logo-fifa.png" class="header-logo" alt="FIFA Logo">
+    <div class="header-logo">FIFA</div>
     <div class="menu-icon">&#9776;</div>
 </header>
 
 <div class="maroon-banner">FIFA WORLD CUP 2026™ OFFICIAL STORE</div>
 
 <div class="hero-banner">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-        <div class="exclusivos-badge">PRODUTOS EXCLUSIVOS</div>
-        <div class="hero-title">COLECIONE A HISTÓRIA</div>
-    </div>
+    <div class="exclusivos-badge">PRODUTOS EXCLUSIVOS</div>
+    <div class="hero-title">COLECIONE A HISTÓRIA</div>
 </div>
 
 <main>
     <div class="products-grid">
         <div class="product-card">
-            <img src="https://i.postimg.cc/W3YV3m7N/capadura.webp" class="product-image" alt="Álbum Capa Dura">
+            <img src="10380.webp" class="product-image" alt="Álbum Capa Dura">
             <div class="product-info">
                 <h3 class="product-title">Álbum Capa Dura Oficial</h3>
                 <p class="product-details">112 páginas, espaço para 980 figurinhas</p>
                 <div class="product-footer">
                     <span class="product-price">R$ 74,90</span>
-                    <button class="buy-button">COMPRAR</button>
+                    <button class="buy-button" onclick="comprar('Álbum Capa Dura', '74.90')">COMPRAR</button>
                 </div>
             </div>
         </div>
 
         <div class="product-card">
-            <img src="https://i.postimg.cc/mD8P9S3p/brochura.webp" class="product-image" alt="Álbum Brochura">
+            <img src="10378.webp" class="product-image" alt="Álbum Brochura">
             <div class="product-info">
                 <h3 class="product-title">Álbum Brochura (Capa Mole)</h3>
                 <p class="product-details">Tamanho Oficial 30 x 27 cm, páginas internas detalhadas</p>
                 <div class="product-footer">
                     <span class="product-price">R$ 24,90</span>
-                    <button class="buy-button">COMPRAR</button>
+                    <button class="buy-button" onclick="comprar('Álbum Brochura', '24.90')">COMPRAR</button>
                 </div>
             </div>
         </div>
 
         <div class="product-card">
-            <img src="https://i.postimg.cc/9FmS0R9r/cromos.jpg" class="product-image" alt="Cromos">
+            <img src="10379.jpg" class="product-image" alt="Cromos">
             <div class="product-info">
                 <h3 class="product-title">Pacote com 7 Cromos</h3>
                 <p class="product-details">Figurinhas metalizadas e raras exclusivas no pacote</p>
                 <div class="product-footer">
                     <span class="product-price">R$ 7,00</span>
-                    <button class="buy-button">COMPRAR</button>
+                    <button class="buy-button" onclick="comprar('Pacote 7 Cromos', '7.00')">COMPRAR</button>
                 </div>
             </div>
         </div>
@@ -288,13 +120,13 @@
         <h2 class="section-title">AVALIAÇÕES DOS COLECIONADORES</h2>
         <div class="testimonial-grid">
             <div class="testimonial-card">
-                <img src="data:image/jpeg;base64,...test_man..." class="testimonial-image" alt="User review 1">
+                <img src="https://images.unsplash.com/photo-1517603920832-7504464113c7?q=80&w=500" class="testimonial-image" alt="User review 1">
                 <div class="testimonial-stars">★★★★★</div>
                 <p class="testimonial-text">"O álbum capa dura chegou impecável. As brilhantes vieram sem defeito. Recomendo!"</p>
             </div>
 
             <div class="testimonial-card">
-                <img src="data:image/jpeg;base64,...test_girl..." class="testimonial-image" alt="User review 2">
+                <img src="https://images.unsplash.com/photo-1529651737248-dad5e287768e?q=80&w=500" class="testimonial-image" alt="User review 2">
                 <div class="testimonial-stars">★★★★★</div>
                 <p class="testimonial-text">"Não acreditei quando abri o pacote! O site é confiável e a entrega super rápida."</p>
             </div>
@@ -303,12 +135,44 @@
 </main>
 
 <footer>
-    <img src="https://i.postimg.cc/W3YV3m7N/footer-logo.png" class="footer-logo" alt="FIFA Logo Footer">
+    <div style="font-size: 1.5rem; font-weight: 900; margin-bottom: 10px;">FIFA</div>
     <p>Licença Oficial FIFA 0ee6</p>
     <p>FIFA Official Store™ – Todos os direitos reservados.</p>
 </footer>
 
+<div id="modalPix" class="modal">
+    <div class="modal-content">
+        <h2 style="color: #28a745">Pagamento via PIX</h2>
+        <p style="margin: 10px 0;">Escaneie para pagar seu <br><strong id="nomeProd"></strong></p>
+        <img id="qrCode" src="" style="width: 200px; border: 1px solid #ddd; padding: 5px;">
+        <p style="margin-top: 10px;">Valor: <strong id="valorProd" style="color: var(--primary-maroon)"></strong></p>
+        <button class="buy-button" style="background: #28a745; margin-top: 15px; width: 100%;" onclick="copiarCodigo()">COPIAR CÓDIGO PIX</button>
+        <button onclick="document.getElementById('modalPix').style.display='none'" style="background:none; border:none; color:red; margin-top:20px; cursor:pointer; font-weight:bold;">FECHAR</button>
+    </div>
+</div>
+
+<script>
+    const CHAVE_PIX = "163.059.829-10";
+
+    function comprar(nome, valor) {
+        document.getElementById('nomeProd').innerText = nome;
+        document.getElementById('valorProd').innerText = "R$ " + valor;
+        
+        const copiaCola = `00020101021126580014BR.GOV.BCB.PIX0114${CHAVE_PIX.replace(/[^0-9]/g, '')}520400005303986540${valor}5802BR5913LOJA_COPA_266009SAO_PAULO62070503***6304`;
+        const qrBase = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(copiaCola)}`;
+        
+        document.getElementById('qrCode').src = qrBase;
+        document.getElementById('modalPix').style.display = 'flex';
+        
+        // Salva o código na variável global para copiar depois
+        window.codigoPixAtual = copiaCola;
+    }
+
+    function copiarCodigo() {
+        navigator.clipboard.writeText(window.codigoPixAtual);
+        alert("Código PIX copiado! Cole no app do seu banco.");
+    }
+</script>
+
 </body>
 </html>
-
-```
